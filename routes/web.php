@@ -9,6 +9,6 @@ Route::get('/', function () {
 });
 
 Route::prefix('admin')->name('admin.')->group(function() { 
-Route::get('/' , [AdminController::class , "index"])->name('index');
+Route::get('' , [AdminController::class , "index"])->name('index');
     
 });
