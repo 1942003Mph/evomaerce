@@ -11,6 +11,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" 
+  crossorigin="anonymous" referrerpolicy="no-referrer" />
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="{{asset('adminassets/plugins/fontawesome-free/css/all.min.css')}}">
   <!-- Theme style -->
@@ -206,13 +208,57 @@ scratch. This page gets rid of all links and provides the needed markup only.
           </li>
           <li class="nav-item">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-th"></i>
+              <i class="fa-solid fa-pager"></i>
               <p>
-                Simple Link
-                <span class="right badge badge-danger">New</span>
+                pages
+                <i class="right fas fa-angle-left"></i>
               </p>
             </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="fa-solid fa-right-to-bracket"></i>
+                  <p>
+                    registration
+                    <i class="right fas fa-angle-left"></i>
+                  </p>
+                </a>
+                <ul class="nav nav-treeview">
+                  <li class="nav-item">
+                    <a href="{{ route('api.login') }}" class="nav-link">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>login</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="{{ route('api.login') }}" class="nav-link ">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>registration</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="./index3.html" class="nav-link">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>logout</p>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <li class="nav-item">
+                <a href="./index2.html" class="nav-link active">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Dashboard v2</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="./index3.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Dashboard v3</p>
+                </a>
+              </li>
+            </ul>
           </li>
+          
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

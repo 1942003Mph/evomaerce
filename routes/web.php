@@ -9,7 +9,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::prefix('admin')->name('admin.')->middleware('auth','aa')->group(function() { 
+Route::prefix('admin')->name('admin.')->middleware('auth','is_admin')->group(function() { 
 Route::get('' , [AdminController::class , "index"])->name('index');    
 });
 

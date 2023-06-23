@@ -17,7 +17,10 @@ class CheckAdmin
      */
     public function handle(Request $request, Closure $next): Response
     {
-        dump(Auth()::user());
+        //   dump(Auth::user()->name);
+         if(Auth::user()->type == 'store'){
+            return redirect('/');
+         }
         return $next($request);
     }
 }

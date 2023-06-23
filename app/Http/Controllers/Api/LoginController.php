@@ -34,7 +34,8 @@ class LoginController extends Controller
         User::create([
             'name'  =>  $data['name'],
             'email' =>  $data['email'],
-            'password' => Hash::make($data['password'])
+            'password' => Hash::make($data['password']),
+
         ]);
 
         return redirect()->route('api.login')->with('success','registration Successfull');
