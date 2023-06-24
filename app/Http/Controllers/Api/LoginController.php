@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 
+
 class LoginController extends Controller
 {
     function index()
@@ -54,12 +55,20 @@ class LoginController extends Controller
             
         ],$request->password);
 
+        $user = Auth::user();
+        $token = $validated->createToken('exampel')->accessToken;
+        dd($token);
+
         if($validated){
             return redirect()->route('admin.index')->with('success','Login Successfull');
         }else{
             return redirect()->back()->with('error','Invalid credentials');
         }
         
+    }
+    public function logout(){
+        auth()->logout();
+        return redirect()->route('api.login')->with('success','You have been successfully logged out');
     }
 
    
