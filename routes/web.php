@@ -1,9 +1,10 @@
 <?php
 
-use App\Http\Controllers\Admin\AdminController;
-use App\Http\Controllers\Api\LoginController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Auth\Registrcontroller;
 
 
 Route::get('/', function () {
@@ -14,14 +15,13 @@ Route::prefix('admin')->name('admin.')->middleware(['auth','is_admin'])->group(f
 Route::get('' , [AdminController::class , "index"])->name('index');    
 });
 
-Route::prefix('api')->name('api.')->group(function() { 
-    // Route::get('login' , [LoginController::class , "login"])->name('login');
-    // Route::post('login_data' , [LoginController::class , "log   in_data"])->name('login_data');
-    Route::get('login',  [LoginController::class ,'index'])->name('login')->middleware('auth:api');
+Route::prefix('Auth')->name('Auth.')->group(function() { 
+    
+    Route::get('login',  [LoginController::class ,'index'])->name('login');
     Route::post('validate_login', [LoginController::class ,'validate_login'])->name('validate_login');
 
-    Route::get('registration', [LoginController::class ,'registration'])->name('registration');
-    Route::post('registration', [LoginController::class ,'validate_registration'])->name('validateRegistration');
+    Route::get('registration', [Registrcontroller::class ,'registration'])->name('registration');
+    Route::post('registration', [Registrcontroller::class ,'validate_registration'])->name('validateRegistration');
     Route::get('logout',[LoginController::class,'logout'])->name('logout');
     });
     // Auth::routes(['verify' => true]);

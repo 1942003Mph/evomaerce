@@ -27,7 +27,7 @@
       @if(session('error'))
       <div class="text-danger "> {{ session('error') }} </div> 
         @endif
-      <form action="{{ route('api.validate_login') }}" method="post">
+      <form action="{{ route('Auth.validate_login') }}" method="post">
           @csrf
         <div class="input-group mb-3">
           <input type="email" class="form-control @error('email') is-invalid @enderror"

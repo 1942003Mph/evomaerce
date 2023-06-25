@@ -225,19 +225,19 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 </a>
                 <ul class="nav nav-treeview">
                   <li class="nav-item">
-                    <a href="{{ route('api.login') }}" class="nav-link">
+                    <a href="{{ route('Auth.login') }}" class="nav-link">
                       <i class="far fa-circle nav-icon"></i>
                       <p>login</p>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="{{ route('api.login') }}" class="nav-link ">
+                    <a href="{{ route('Auth.login') }}" class="nav-link ">
                       <i class="far fa-circle nav-icon"></i>
                       <p>registration</p>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="{{ route('api.logout') }}" class="nav-link">
+                    <a href="{{ route('Auth.logout') }}" class="nav-link">
                       <i class="far fa-circle nav-icon"></i>
                       <p>logout</p>
                     </a>

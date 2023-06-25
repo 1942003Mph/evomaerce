@@ -24,7 +24,7 @@
     <div class="card-body register-card-body">
       <p class="login-box-msg">Register a new membership</p>
 
-      <form action="{{ route('api.validateRegistration') }}" method="post">
+      <form action="{{ route('Auth.validateRegistration') }}" method="post">
         @csrf
         <div class="input-group mb-3">
           <input type="text" class="form-control @error('name') is-invalid @enderror" 
