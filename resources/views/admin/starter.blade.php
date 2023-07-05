@@ -158,7 +158,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
       </li>
     </ul>
   </nav>
-  <!-- /.navbar -->
+  
 
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
@@ -292,8 +292,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     </div>
     <!-- /.content -->
   </div>
-  <!-- /.content-wrapper -->
-
+ 
   <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">
     <!-- Control sidebar content goes here -->

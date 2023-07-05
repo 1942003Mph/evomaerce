@@ -8,7 +8,7 @@ use App\Http\Controllers\Auth\Registrcontroller;
 
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('admin.layout.head');
 });
 
 Route::prefix('admin')->name('admin.')->middleware(['auth','is_admin'])->group(function() { 

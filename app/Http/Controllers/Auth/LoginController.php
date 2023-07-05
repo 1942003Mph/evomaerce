@@ -23,7 +23,7 @@ class LoginController extends Controller
     {
         $request->validate([
             'email'=>'required|email',
-            'password'=>'required'
+            'password'=>'required|min:6'
         ]);
 
         $user =auth()->attempt([
@@ -32,6 +32,7 @@ class LoginController extends Controller
             
         ],$request->password);
         if($user){
+            dd(Auth()->user());
             return redirect()->route('admin.index')->with('success','Login Successfull');
         }else{
             return redirect()->back()->with('error','Invalid credentials');

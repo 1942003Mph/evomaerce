@@ -15,14 +15,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::post('validate_login', [AuthController::class ,'validate_login'])->name('validate_login');
-Route::post('registration', [AuthController::class ,'validate_registration'])->name('validateRegistration');
+Route::post('validate_login', [AuthController::class ,'validate_login']);
+Route::post('registration', [AuthController::class ,'validate_registration']);
 
 Route::middleware('auth:api')->group(function(){
-    Route::get('get-user',  [AuthController::class ,'userInfo'])->name('login');
+    Route::get('get-user',  [AuthController::class ,'userInfo']);
     
 });
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});

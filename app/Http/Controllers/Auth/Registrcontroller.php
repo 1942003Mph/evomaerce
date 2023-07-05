@@ -25,18 +25,22 @@ class Registrcontroller extends Controller
 
         $data = $request->all();
 
-        User::create([
+        $user= User::create([
             'name'  =>  $data['name'],
             'email' =>  $data['email'],
             'password' => Hash::make($data['password']),
 
         ]);
-        if(Auth::attempt($request->only('email','password'))){
-             return redirect()->route('/')->with('success','registration Successfull');
-            // dump(Auth::user());
 
-        }
-         return redirect()->route('Auth.registration')->withErrors('errore');
+        Auth::login($user);
+        // dd(Auth::user());
+        return redirect()->route('/')->with('success','registration Successfull');
+        // if(Auth::attempt($request->only('email','password'))){
+        //      return redirect()->route('/')->with('success','registration Successfull');
+        //     // dump(Auth::user());
+
+        // }
+        //  return redirect()->route('Auth.registration')->withErrors('errore');
         // dump(Auth::user());
 
 
