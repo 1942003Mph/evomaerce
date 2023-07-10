@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 
 class AuthController extends Controller
 {
@@ -14,11 +15,15 @@ class AuthController extends Controller
      */
     public function validate_registration(Request $request)
     {
-        $request->validate([
+        $validator = Validator::make($request->all(),[
             'name' => 'required|string',
             'email' => 'required|email|unique:users',
             'password' => 'required|string|min:6',
         ]);
+
+        if($validator->fails()){
+            return response()->json(['error'=>$validator->errors()->all()],401);
+        }
         $user = User::create([
             'name'  =>  $request->name,
             'email' =>  $request->email,
@@ -31,29 +36,35 @@ class AuthController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function validate_login(Request $request)
-    {
-        $data = [
-            'email'=>$request->email,
-            'password'=>$request->password,
-        ];
-        if(auth()->attempt($data)){
-             $token =  auth()->user->createToken('Token')->accessToken;
-        return response()->json(['token'=>$token],200);
+    public function validate_login(Request $request){
+    $data = [
+        'email' => $request->email,
+        'password' => $request->password,
+    ];
 
-        }
-        else{
-        return response()->json(['error'=>'unauthorized'],401);
-
-        }
+    if(auth()->attempt($data)){
+        $user = auth()->user();
+        $token = auth()->user()->createToken('Token')->accessToken;
+        $user['token'] = $token;
+        return response()->json(['user' => $user], 200);
     }
+    else {
+        return response()->json(['error' => 'unauthorized'], 401);
+    }
+}
 
     /**
      * Display the specified resource.
      */
     public function show(string $id)
     {
-        //
+        dd(11);
+        $user = auth()->user();
+        if ($user && $user->name === 'Jason') {
+            // Return the user data
+            return response()->json(['user' => $user], 200);
+            return response()->json(['error' => 'User not found'], 404);
+        }
     }
 
     /**

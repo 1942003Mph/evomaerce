@@ -1,6 +1,1 @@
-@extends('admin.starter')
-
-@section('title', 'Dashboard')
-@section('content')
-    
-@stop
+@include('admin.layout.master')
