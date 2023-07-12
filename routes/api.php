@@ -17,13 +17,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::post('validate_login', [AuthController::class ,'validate_login']);
 Route::post('registration', [AuthController::class ,'validate_registration']);
-Route::get('get-user',  function(){
-    dd(111);
-});
-// Route::middleware('auth:api')->group(function(){
-//     Route::get('get-user',  function(){
-//         dd(111);
-//     });
+
+Route::middleware('auth:api')->group(function(){
+    Route::get('get-user1', [AuthController::class ,'show']);
     
-// });
+});
 

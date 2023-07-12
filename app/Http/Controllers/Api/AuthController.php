@@ -56,15 +56,11 @@ class AuthController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show()
     {
-        dd(11);
+
         $user = auth()->user();
-        if ($user && $user->name === 'Jason') {
-            // Return the user data
-            return response()->json(['user' => $user], 200);
-            return response()->json(['error' => 'User not found'], 404);
-        }
+        return response()->json(['user' => $user], 200);
     }
 
     /**
