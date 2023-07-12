@@ -17,13 +17,18 @@
   @yield('styles')
 </head>
 <body class="hold-transition sidebar-mini">
-    @extends('admin.layout.nav')
+<div class="wrapper">
     @extends('admin.layout.sidbar')
+    @extends('admin.layout.nav')
+    @yield('content')
+    @extends('admin.layout.footer')
+</div>
     <script src="{{asset('adminassets/plugins/jquery/jquery.min.js')}}"></script>
 <!-- Bootstrap 4 -->
 <script src="{{asset('adminassets/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
 <!-- AdminLTE App -->
 <script src="{{asset('adminassets/dist/js/adminlte.min.js')}}"></script>
 @yield('scripts')
+
 </body>
 </html>

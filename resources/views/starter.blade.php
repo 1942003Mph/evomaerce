@@ -304,9 +304,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <!-- /.control-sidebar -->
 
   <!-- Main Footer -->
-  <footer class="main-footer">
-   
-  </footer>
+  
 </div>
 <!-- ./wrapper -->
 
