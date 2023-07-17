@@ -34,7 +34,7 @@ class Registrcontroller extends Controller
 
         Auth::login($user);
         // dd(Auth::user());
-        return redirect()->route('/')->with('success','registration Successfull');
+        return redirect()->route('home')->with('success','registration Successfull');
         // if(Auth::attempt($request->only('email','password'))){
         //      return redirect()->route('/')->with('success','registration Successfull');
         //     // dump(Auth::user());

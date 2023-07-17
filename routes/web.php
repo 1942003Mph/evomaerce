@@ -1,16 +1,20 @@
 <?php
 
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Auth\Registrcontroller;
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\Admin\categoryController;
 
 Route::get('/',  [Controller::class ,'index'])->name('home');
 
 Route::prefix('admin')->name('admin.')->middleware(['auth','is_admin'])->group(function() { 
-Route::get('' , [AdminController::class , "index"])->name('index');    
+Route::get('index' , [AdminController::class , "index"])->name('index');    
+Route::resource('user', UserController::class);  
+Route::resource('caregory', categoryController::class);  
 });
 
 Route::prefix('Auth')->name('Auth.')->group(function() { 
