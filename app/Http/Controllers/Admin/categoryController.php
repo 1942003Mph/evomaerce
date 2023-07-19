@@ -5,8 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\category;
 use Illuminate\Http\Request;
-use Spatie\Backtrace\File;
-
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File;
 
 class categoryController extends Controller
 {
@@ -15,7 +15,15 @@ class categoryController extends Controller
      */
     public function index()
     {
-        $categories = category::latest('id')->paginate(10);
+         $categories = category::latest('id')->paginate(10);
+        // if($request->has('search')) {
+        //     $categories = category::latest('id')
+        //     ->where('name', 'like', '%' . $request->search . '%')
+        //     ->paginate(20);
+        // }else {
+        //     $categories = category::latest('id')->paginate(20);
+        // }
+
 
         return view('admin.categories.index' , compact('categories'));
     }
@@ -79,6 +87,8 @@ class categoryController extends Controller
             'name' => 'required'
         ]);
 
+       
+
         $category = Category::find($id);
 
         $img_name = $category->image;
@@ -86,16 +96,17 @@ class categoryController extends Controller
             File::delete(public_path('uploads/'.$category->image));
             $img_name = time().rand().$request->file('image')->getClientOriginalName();
             $request->file('image')->move(public_path('uploads'), $img_name);
+            $category->image = $img_name;
         }
-
-
-        $category->update([
-            'name' => $request->title,
-            'image' => $img_name
-        ]);
+        $category->name = $request->name;
+        $category->save();
+        // $category->update([
+        //     'name' => $request->name,
+        //     'image' => $img_name
+        // ]);
 
         return redirect()
-        ->route('admin.categories.index')
+        ->route('admin.caregory.index')
         ->with('msg', 'Category updated successfully')
         ->with('type', 'info');
     }
@@ -105,10 +116,9 @@ class categoryController extends Controller
      */
     public function destroy(string $id)
     {
-        Category::find($id);
-        // $category = category::destroy($id);
-        // File::delete(public_path('uploads/'.$category->image));
-        // $category->delete;
+        $category = Category::find($id);
+        Storage::delete(public_path('uploads/'.$category->image));
+        $category->delete();
 
         return redirect()
         ->route('admin.caregory.index')

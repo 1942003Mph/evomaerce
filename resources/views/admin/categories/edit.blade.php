@@ -3,7 +3,7 @@
 @section('content')
  <!-- Content Wrapper. Contains page content -->
  <h1 class="h3 mb-4 text-gray-800">Edit categories</h1>
- <form action="{{ route('admin.caregory.store' ,$category->id)  }}" method="POST" enctype="multipart/form-data">
+ <form action="{{ route('admin.caregory.update' , $category->id)  }}" method="POST" enctype="multipart/form-data">
     @csrf
     @method('PUT')
     <div class="mb-3">

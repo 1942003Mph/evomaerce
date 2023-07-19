@@ -2,12 +2,29 @@
 @section('title' , 'Catrgoris')
 @section('content')
  <!-- Content Wrapper. Contains page content -->
- <h1 class="h3 mb-4 text-gray-800">All categories</h1>
+ <div class="d-flex justify-content-between align-items-center mb-3">
+    <h1>All Posts</h1>
+    <a href="{{ route('admin.caregory.create') }}" class="btn btn-dark">Add new Post</a>
+</div>
+
 
  @if (session('msg'))
     <div class="alert alert-{{ session('type') }}">{{ session('msg') }}</div>
 @endif
 
+<div class="input-group mb-3 ">
+    <div class="search">
+        <input name="search" type="search" id="search" class="form-control"  placeholder="Search about anything ..." >
+
+    </div>
+</div>
+
+{{-- <form action="{{ route('admin.caregory.index') }}" method="GET">
+    <div class="input-group mb-3">
+        <input name="search" type="text" class="form-control" value="{{ request()->search }}" placeholder="Search about anything ..." >
+        <button class="btn btn-primary" id="button-addon2">Search</button>
+    </div>
+</form> --}}
 
         <div class="row">
             <table class="table table-hover table-bordered table-striped">
@@ -43,6 +60,16 @@
         <td colspan="5" class="text-center">No Data Available</td>
     </tr>
     @endforelse
-
 </table>
+{{ $categories->appends($_GET)->links() }}
 @endsection
+@push('scripts')
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
+
+    <script>
+     $('#search').on('keyup',function() {
+     }); 
+    </script>
+
+@endpush
